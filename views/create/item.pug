@@ -1,0 +1,16 @@
+include ../includes/_header
+main.flex-shrink-0(role='main')
+    .container
+        h1 Создать предмет
+        form(action='/admin/items', method='POST', enctype="multipart/form-data")
+            .form-group
+                label(for='name') Название
+                input.form-control#name(name="name", type='text', placeholder='Название')
+            .form-group
+                label(for='description') Описание
+                textarea.form-control#description(name="description", placeholder='Описание')
+            .form-group
+                label(for='image') Картинка
+                input.form-control#image(name="image", type='file')
+            button.btn.btn-primary(type='submit') Готово
+include ../includes/_footer

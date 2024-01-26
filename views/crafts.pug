@@ -1,0 +1,60 @@
+include includes/header
+link(rel='stylesheet', href='../assets/css/bootstrap.min.css')
+link(rel='stylesheet', href='../assets/css/style.css')
+link(rel='shortcut icon', href='../assets/img/favicon.ico', type='image/x-icon')
+.container.pt-4.pb-4
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.rounded
+        a.navbar-brand(href='#') GrimWorld Admin
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample09', aria-controls='navbarsExample09', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarsExample09
+            ul.navbar-nav.mr-auto
+                li.nav-item
+                    a.nav-link(href='/admin/') Настройки
+                li.nav-item
+                    a.nav-link(href='/admin/products')
+                        | Товары
+                li.nav-item.active
+                    a.nav-link(href='/admin/crafts')
+                        | Крафты
+                        span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='/admin/categories') Категории
+                li.nav-item
+                    a.nav-link(href='/admin/items') Предметы
+main.flex-shrink-0(role='main')
+    .container
+        div.justify-content-between.d-flex.my-4
+            h1 Крафты
+            a(href='/admin/crafts/create')
+                button.btn.btn-outline-success.btn-sm Создать
+        table.table.table-striped.table-hover
+            thead
+                tr
+                    th(scope='col') Результат
+                    th(scope='col') #1
+                    th(scope='col') #2
+                    th(scope='col') #3
+                    th(scope='col') #4
+                    th(scope='col') #5
+                    th(scope='col') #6
+                    th(scope='col') #7
+                    th(scope='col') #8
+                    th(scope='col') #9
+                    th(scope='col') Действие
+            tbody
+                each item in items
+                    tr
+                        td=item.Result.name
+                          each i in [0,1,2,3,4,5,6,7,8]
+                              td=item.Items.find(_item => _item.column === i) ? item.Items.find(_item => _item.column === i).Item.name + ' x' + item.Items.find(_item => _item.column === i).count : '-'
+                        td.d-flex(style='gap: 1rem;')
+                            a(href='/admin/crafts/'+item.id)
+                                button.btn.btn-outline-primary.btn-sm Ред.
+                            form(action='/admin/crafts/'+item.id, method="POST")
+                                input(type='hidden', name='_method', value='delete')
+                                button.btn.btn-outline-danger.btn-sm Удалить
+include includes/footer
+script(src='../assets/js/jquery-3.3.1.slim.min.js')
+script(src='../assets/js/popper.min.js')
+script(src='../assets/js/bootstrap.min.js')

@@ -1,0 +1,57 @@
+include includes/header
+link(rel='stylesheet', href='../assets/css/bootstrap.min.css')
+link(rel='stylesheet', href='../assets/css/style.css')
+link(rel='shortcut icon', href='../assets/img/favicon.ico', type='image/x-icon')
+.container.pt-4.pb-4
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.rounded
+        a.navbar-brand(href='#') GrimWorld Admin
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample09', aria-controls='navbarsExample09', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarsExample09
+            ul.navbar-nav.mr-auto
+                li.nav-item
+                    a.nav-link(href='/admin/') Настройки
+                li.nav-item.active
+                    a.nav-link(href='/admin/products')
+                        | Товары
+                        span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='/admin/crafts') Крафты
+                li.nav-item
+                    a.nav-link(href='/admin/categories') Категории
+                li.nav-item
+                    a.nav-link(href='/admin/items') Предметы
+main.flex-shrink-0(role='main')
+    .container
+        div.justify-content-between.d-flex.my-4
+            h1 Товары
+            a(href='/admin/products/create')
+                button.btn.btn-outline-success.btn-sm Создать
+        table.table.table-striped.table-hover
+            thead
+                tr
+                    th(scope='col') Картинка
+                    th(scope='col') Название
+                    th(scope='col') Категория
+                    th(scope='col') Цена
+                    th(scope='col') Описание
+                    th(scope='col') Действие
+            tbody
+                each product in items
+                    tr
+                        th
+                            img(src=(product.Media ? `http://localhost:5000/uploads/`+product.Media.name : ''), width=80)
+                        td=product.name
+                        td=product.Category.name
+                        td=product.price + '₽'
+                        td=product.description
+                        td.d-flex(style='gap: 1rem;')
+                            a(href='/admin/products/'+product.id)
+                                button.btn.btn-outline-primary.btn-sm Ред.
+                            form(action='/admin/products/'+product.id, method="POST")
+                                input(type='hidden', name='_method', value='delete')
+                                button.btn.btn-outline-danger.btn-sm Удалить
+include includes/footer
+script(src='../assets/js/jquery-3.3.1.slim.min.js')
+script(src='../assets/js/popper.min.js')
+script(src='../assets/js/bootstrap.min.js')

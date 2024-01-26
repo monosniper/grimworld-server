@@ -1,0 +1,10 @@
+include ../includes/_header
+main.flex-shrink-0(role='main')
+    .container
+        h1 Создать категорию
+        form(action='/admin/categories', method='POST')
+            .form-group
+                label(for='name') Название
+                input.form-control#name(name="name", type='text', placeholder='Название')
+            button.btn.btn-primary(type='submit') Готово
+include ../includes/_footer

@@ -1,0 +1,21 @@
+include ../includes/_header
+main.flex-shrink-0(role='main')
+    .container
+        h1 Редактирование крафта
+        form(action='/admin/crafts/'+craft.id, method='POST')
+            .form-group
+                label(for='resultId') Результат
+                select.form-control#resultId(name="resultId",)
+                    each i in items
+                        option(value=i.id, selected=craft.resultId === i.id)=i.name
+            each i in [0,1,2,3,4,5,6,7,8]
+                 .form-group
+                     label='#' + (i + 1)
+                     select.form-control(name="items[" + i + "][id]")
+                         option(value=null) -
+                         each _i in items
+                             option(value=_i.id, selected=(craft.Items.find(_item => _item.column === i) ? (craft.Items.find(_item => _item.column === i).Item.id === _i.id) : false))=_i.name
+                     input.form-control(name="items[" + i + "][count]", type='number', value=(craft.Items.find(_item => _item.column === i) ? craft.Items.find(_item => _item.column === i).count : ''))
+            input(type='hidden', name='_method', value='put')
+            button.btn.btn-primary(type='submit') Готово
+include ../includes/_footer

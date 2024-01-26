@@ -1,0 +1,16 @@
+.je-switcher {display: none !important}
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#editor_holder {
+    width: 800px;
+    max-width: 100%;
+    margin-top: 50px;
+}
+
+.but {
+    display: block;
+    margin: 2rem auto !important;
+}

@@ -1,0 +1,29 @@
+include ../includes/_header
+main.flex-shrink-0(role='main')
+    .container
+        h1 Редактирование товара
+        form(action='/admin/products/'+item.id, method='POST', enctype="multipart/form-data")
+            .form-group
+                label(for='name') Название
+                input.form-control#name(name="name", type='text', placeholder='Название', value=item.name)
+            .form-group
+                label(for='CategoryId') Категория
+                select.form-control#CategoryId(name="CategoryId")
+                    each category in categories
+                        option(value=category.id, selected=item.CategoryId === category.id)=category.name
+            .form-group
+                label(for='isPrivilege') Привилегия
+                input.form-control#isPrivilege(name="isPrivilege", type='checkbox', checked=item.isPrivilege)
+            .form-group
+                label(for='price') Цена
+                input.form-control#price(name="price", type='number', placeholder='Цена', value=item.price)
+            .form-group
+                label(for='description') Описание
+                textarea.form-control#description(name="description", placeholder='Описание')=item.description
+            .form-group
+                label(for='image') Картинка
+                img(src=(item.Media ? `http://localhost:5000/uploads/`+item.Media.name : ''), width=80)
+                input.form-control#image(name="image", type='file')
+            input(type='hidden', name='_method', value='put')
+            button.btn.btn-primary(type='submit') Готово
+include ../includes/_footer

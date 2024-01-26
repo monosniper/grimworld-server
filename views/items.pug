@@ -1,0 +1,53 @@
+include includes/header
+link(rel='stylesheet', href='../assets/css/bootstrap.min.css')
+link(rel='stylesheet', href='../assets/css/style.css')
+link(rel='shortcut icon', href='../assets/img/favicon.ico', type='image/x-icon')
+.container.pt-4.pb-4
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.rounded
+        a.navbar-brand(href='#') GrimWorld Admin
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample09', aria-controls='navbarsExample09', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarsExample09
+            ul.navbar-nav.mr-auto
+                li.nav-item
+                    a.nav-link(href='/admin/') Настройки
+                li.nav-item
+                    a.nav-link(href='/admin/products') Товары
+                li.nav-item
+                    a.nav-link(href='/admin/crafts') Крафты
+                li.nav-item
+                    a.nav-link(href='/admin/categories') Категории
+                li.nav-item.active
+                    a.nav-link(href='/admin/items')
+                        | Предметы
+                        span.sr-only (current)
+main.flex-shrink-0(role='main')
+    .container
+        div.justify-content-between.d-flex.my-4
+            h1 Предметы
+            a(href='/admin/items/create')
+                button.btn.btn-outline-success.btn-sm Создать
+        table.table.table-striped.table-hover
+            thead
+                tr
+                    th(scope='col') Картинка
+                    th(scope='col') Название
+                    th(scope='col') Описание
+                    th(scope='col') Действие
+            tbody
+                each item in items
+                    tr
+                        td
+                            img(src=(item.Media ? `http://localhost:5000/uploads/`+item.Media.name : ''), width=80)
+                        td=item.name
+                        td=item.description
+                        td.d-flex(style='gap: 1rem;')
+                            a(href='/admin/items/'+item.id)
+                                button.btn.btn-outline-primary.btn-sm Ред.
+                            form(action='/admin/items/'+item.id, method="POST")
+                                input(type='hidden', name='_method', value='delete')
+                                button.btn.btn-outline-danger.btn-sm Удалить
+include includes/footer
+script(src='../assets/js/jquery-3.3.1.slim.min.js')
+script(src='../assets/js/popper.min.js')
+script(src='../assets/js/bootstrap.min.js')

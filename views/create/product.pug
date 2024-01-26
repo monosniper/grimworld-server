@@ -1,0 +1,39 @@
+include ../includes/_header
+main.flex-shrink-0(role='main')
+    .container
+        h1 Создать товар
+        form(action='/admin/products', method='POST', enctype="multipart/form-data")
+            .form-group
+                label(for='name') Название
+                input.form-control#name(name="name", type='text', placeholder='Название')
+            .form-group
+                label(for='CategoryId') Категория
+                select.form-control#CategoryId(name="CategoryId",)
+                    each category in categories
+                        option(value=category.id)=category.name
+            .form-group
+                label(for='isPrivilege') Привилегия
+                input.form-control#isPrivilege(name="isPrivilege", type='checkbox')
+            .form-group
+                label(for='price_1') Цена
+                input.form-control#price_1(name="price_1", type='number', placeholder='Цена')
+            .form-group
+                label(for='price_2') Цена за 2 месяца
+                input.form-control#price_2(name="price_2", type='number', placeholder='Цена')
+            .form-group
+                label(for='price_3') Цена за 3 месяца
+                input.form-control#price_3(name="price_3", type='number', placeholder='Цена')
+            .form-group
+                label(for='price_forever') Цена навсегда
+                input.form-control#price_forever(name="price_forever", type='number', placeholder='Цена')
+            .form-group
+                label(for='description') Описание
+                textarea.form-control#description(name="description", placeholder='Описание')
+            .form-group
+                label(for='image') Картинка
+                input.form-control#image(name="image", type='file')
+            .form-group
+                label(for='rcon_slug') RCON Slug
+                input.form-control#rcon_slug(name="rcon_slug", type='text', placeholder='RCON Slug')
+            button.btn.btn-primary(type='submit') Готово
+include ../includes/_footer

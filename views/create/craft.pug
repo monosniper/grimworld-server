@@ -1,0 +1,20 @@
+include ../includes/_header
+main.flex-shrink-0(role='main')
+    .container
+        h1 Создать крафт
+        form(action='/admin/crafts', method='POST')
+            .form-group
+                label(for='resultId') Результат
+                select.form-control#resultId(name="resultId")
+                    each i in items
+                        option(value=i.id)=i.name
+            each i in [0,1,2,3,4,5,6,7,8]
+                .form-group
+                    label="#"+(i+1)
+                    select.form-control(name="items["+i+"][id]")
+                        each item in items
+                            option(value=item.id)=item.name
+                        option(value=null, selected) -
+                    input.form-control(name="items["+i+"][count]", type='number', placeholder='Кол-во')
+            button.btn.btn-primary(type='submit') Готово
+include ../includes/_footer

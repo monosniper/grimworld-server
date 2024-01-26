@@ -1,0 +1,18 @@
+include ../includes/_header
+main.flex-shrink-0(role='main')
+    .container
+        h1 Редактирование предмета
+        form(action='/admin/items/'+item.id, method='POST', enctype="multipart/form-data")
+            .form-group
+                label(for='name') Название
+                input.form-control#name(name="name", type='text', placeholder='Название', value=item.name)
+            .form-group
+                label(for='description') Описание
+                textarea.form-control#description(name="description", placeholder='Описание')=item.description
+            .form-group
+                label(for='image') Картинка
+                img(src=(item.Media ? `http://localhost:5000/uploads/`+item.Media.name : ''), width=80)
+                input.form-control#image(name="image", type='file')
+            input(type='hidden', name='_method', value='put')
+            button.btn.btn-primary(type='submit') Готово
+include ../includes/_footer

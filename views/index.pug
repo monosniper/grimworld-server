@@ -1,0 +1,65 @@
+include includes/header
+link(rel='stylesheet', href='../assets/css/bootstrap.min.css')
+link(rel='stylesheet', href='../assets/css/style.css')
+link(rel='shortcut icon', href='../assets/img/favicon.ico', type='image/x-icon')
+.container.pt-4.pb-4
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.rounded
+        a.navbar-brand(href='#') GrimWorld Admin
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample09', aria-controls='navbarsExample09', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarsExample09
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    a.nav-link(href='/admin/')
+                        | Настройки
+                        span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='/admin/products') Товары
+                li.nav-item
+                    a.nav-link(href='/admin/crafts') Крафты
+                li.nav-item
+                    a.nav-link(href='/admin/categories') Категории
+                li.nav-item
+                    a.nav-link(href='/admin/items') Предметы
+            //form.form-inline.my-2.my-md-0
+            //    input.form-control(type='text', placeholder='Search', aria-label='Search')
+main.flex-shrink-0(role='main')
+    .container
+        h1 Настройки
+        form(action='/admin/settings', method='POST')
+            each row in settings
+                .row
+                    each col in row
+                        .col-md-6.col-sm-12
+                            .form-group
+                                label(for=col.key)=col.key
+                                textarea.form-control(name=col.key, placeholder=col.key, id=col.key)=col.value
+
+            button.btn.btn-primary(type='submit') Готово
+        h1 Выдать привилегию | души
+        form(action='/admin/rcon.json', method='POST')
+            .row
+                .col-md-6.col-sm-12
+                    .form-group
+                        select.form-control#type(name='type')
+                            option(value='privilege') Привилегия
+                            option(value='souls') Души
+                .col-md-6.col-sm-12
+                    .form-group
+                        select.form-control#privilege_slug(name='privilege_slug')
+                            each privilege in privileges
+                                option(value=privilege.rcon_slug)=privilege.name
+            .row
+                .col-md-6.col-sm-12
+                    .form-group
+                        input.form-control#username(name="username", placeholder='Имя игрока')
+                .col-md-6.col-sm-12
+                    .form-group
+                        input.form-control#count(name="count", placeholder='Кол-во душ')
+
+            button.btn.btn-primary(type='submit') Выдать
+
+include includes/footer
+script(src='../assets/js/jquery-3.3.1.slim.min.js')
+script(src='../assets/js/popper.min.js')
+script(src='../assets/js/bootstrap.min.js')

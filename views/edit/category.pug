@@ -1,0 +1,11 @@
+include ../includes/_header
+main.flex-shrink-0(role='main')
+    .container
+        h1 Редактирование категории
+        form(action='/admin/categories/'+item.id, method='POST')
+            .form-group
+                label(for='name') Название
+                input.form-control#name(name="name", type='text', placeholder='Название', value=item.name)
+            input(type='hidden', name='_method', value='put')
+            button.btn.btn-primary(type='submit') Готово
+include ../includes/_footer
