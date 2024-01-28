@@ -43,7 +43,7 @@ main.flex-shrink-0(role='main')
                             img(src=(product.Media ? `https://api.grimworld.xyz/uploads/`+product.Media.name : ''), width=80)
                         td=product.name
                         td=product.Category.name
-                        td=product.price + '₽'
+                        td=product.price_1 + '₽'
                         td=product.description
                         td.d-flex(style='gap: 1rem;')
                             a(href='/admin/products/'+product.id)
