@@ -13,7 +13,7 @@ class SettingController {
         return res.json({data})
     }
     async getOnline(req, res, next) {
-        const result = await util.queryBasic(process.env.MINECRAFT_HOST, process.env.MINECRAFT_PORT, { enableSRV: true })
+        const result = await util.queryBasic(process.env.MINECRAFT_HOST, parseInt(process.env.MINECRAFT_PORT), { enableSRV: true })
 
         return res.json({data: result.players})
     }
