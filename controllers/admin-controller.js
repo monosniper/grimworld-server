@@ -25,23 +25,23 @@ function chunkArray(myArray, chunk_size){
 class AdminController {
     async index(req, res, next) {
         const defaultSettings = {
-            // ip1: "100.0.0.0",
-            // ip2: "100.0.0.0",
-            // diamonds_coef: 1.5,
-            // description: "lorem ipsum naxui idi kurwa jalab, onayneski lorem ipsum naxui idi kurwa jalab",
-            // rules: "lorem ipsum naxui idi kurwa jalab, onayneski lorem ipsum naxui idi kurwa jalab",
-            // policy: "lorem ipsum naxui idi kurwa jalab, onayneski lorem ipsum naxui idi kurwa jalab",
-            // telegram: "https://www.google.com",
-            // youtube: "https://www.google.com",
-            // tiktok: "https://www.google.com",
-            // "min_diamonds": 50,
-            // "max_diamonds": 10000,
-            // "rcon_souls": "points give %username% %count%",
-            // "rcon_privilege": "lp user %username% parent addtemp %slug% %time%",
-            // "rcon_privilege_forever": "lp user %username% parent add %slug%",
+            ip1: "100.0.0.0",
+            ip2: "100.0.0.0",
+            diamonds_coef: 1.5,
+            description: "lorem ipsum naxui idi kurwa jalab, onayneski lorem ipsum naxui idi kurwa jalab",
+            rules: "lorem ipsum naxui idi kurwa jalab, onayneski lorem ipsum naxui idi kurwa jalab",
+            policy: "lorem ipsum naxui idi kurwa jalab, onayneski lorem ipsum naxui idi kurwa jalab",
+            telegram: "https://www.google.com",
+            youtube: "https://www.google.com",
+            tiktok: "https://www.google.com",
+            "min_diamonds": 50,
+            "max_diamonds": 10000,
+            "rcon_souls": "points give %username% %count%",
+            "rcon_privilege": "lp user %username% parent addtemp %slug% %time%",
+            "rcon_privilege_forever": "lp user %username% parent add %slug%",
         }
 
-        // Object.entries(defaultSettings).forEach(([key, value]) => Setting.create({key, value}))
+        Object.entries(defaultSettings).forEach(([key, value]) => Setting.create({key, value}))
 
         const settings = await Setting.findAll()
         const privileges = await Product.findAll({where: {isPrivilege: true}})
