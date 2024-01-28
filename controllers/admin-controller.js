@@ -41,7 +41,7 @@ class AdminController {
             "rcon_privilege_forever": "lp user %username% parent add %slug%",
         }
 
-        // Object.entries(defaultSettings).forEach(([key, value]) => Setting.create({key, value}))
+        Object.entries(defaultSettings).forEach(([key, value]) => Setting.create({key, value}))
 
         const settings = await Setting.findAll()
         const privileges = await Product.findAll({where: {isPrivilege: true}})
