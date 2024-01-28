@@ -10,5 +10,6 @@ router.get("/products", ProductController.getAll);
 router.get("/crafts", CraftController.getAll);
 router.get("/bans", BanController.getAll);
 router.get("/settings", SettingController.getAll);
+router.get("/online", SettingController.getOnline);
 
 module.exports = router;

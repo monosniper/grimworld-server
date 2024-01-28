@@ -1,4 +1,5 @@
 const Setting = require("../db/models/setting");
+const util = require('minecraft-server-util');
 
 class SettingController {
     async getAll(req, res, next) {
@@ -10,6 +11,11 @@ class SettingController {
         })
 
         return res.json({data})
+    }
+    async getOnline(req, res, next) {
+        const result = await util.queryBasic(process.env.MINECRAFT_HOST, process.env.MINECRAFT_PORT, { enableSRV: true })
+
+        return res.json({data: result.players})
     }
 }
 
