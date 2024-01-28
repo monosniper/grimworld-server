@@ -36,9 +36,9 @@ sequelize.authenticate().then(() => {
 
     require("./db/models")
 
-    sequelize.sync({force: true}).then(() => {
-        console.log("DB synced")
-    })
+    // sequelize.sync({force: true}).then(() => {
+    //     console.log("DB synced")
+    // })
 
     app.listen(PORT, () => {
         console.log("Started: http://localhost:"+PORT)
