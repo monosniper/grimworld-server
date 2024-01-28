@@ -171,7 +171,9 @@ class AdminController {
     }
 
     async storeProduct(req, res, next) {
-        const product = await Product.create(req.body)
+        const product = await Product.create({
+            ...req.body, isPrivilege: req.body.isPrivilege === 'on'
+        })
 
         if(req.files) {
             const { image } = req.files
