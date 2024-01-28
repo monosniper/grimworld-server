@@ -38,7 +38,7 @@ main.flex-shrink-0(role='main')
                 each item in items
                     tr
                         td
-                            img(src=(item.Media ? `http://localhost:5000/uploads/`+item.Media.name : ''), width=80)
+                            img(src=(item.Media ? `https://api.grimworld.xyz/uploads/`+item.Media.name : ''), width=80)
                         td=item.name
                         td=item.description
                         td.d-flex(style='gap: 1rem;')

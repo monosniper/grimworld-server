@@ -15,14 +15,23 @@ main.flex-shrink-0(role='main')
                 label(for='isPrivilege') Привилегия
                 input.form-control#isPrivilege(name="isPrivilege", type='checkbox', checked=item.isPrivilege)
             .form-group
-                label(for='price') Цена
-                input.form-control#price(name="price", type='number', placeholder='Цена', value=item.price)
+                label(for='price_1') Цена
+                input.form-control#price_1(name="price_1", type='number', placeholder='Цена', value=item.price_1)
+            .form-group
+                label(for='price_2') Цена за 2 месяца
+                input.form-control#price_2(name="price_2", type='number', placeholder='Цена', value=item.price_2)
+            .form-group
+                label(for='price_3') Цена за 3 месяца
+                input.form-control#price_3(name="price_3", type='number', placeholder='Цена', value=item.price_3)
+            .form-group
+                label(for='price_forever') Цена навсегда
+                input.form-control#price_forever(name="price_forever", type='number', placeholder='Цена', value=item.price_forever)
             .form-group
                 label(for='description') Описание
                 textarea.form-control#description(name="description", placeholder='Описание')=item.description
             .form-group
                 label(for='image') Картинка
-                img(src=(item.Media ? `http://localhost:5000/uploads/`+item.Media.name : ''), width=80)
+                img(src=(item.Media ? `https://api.grimworld.xyz/uploads/`+item.Media.name : ''), width=80)
                 input.form-control#image(name="image", type='file')
             input(type='hidden', name='_method', value='put')
             button.btn.btn-primary(type='submit') Готово

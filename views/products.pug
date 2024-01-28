@@ -40,7 +40,7 @@ main.flex-shrink-0(role='main')
                 each product in items
                     tr
                         th
-                            img(src=(product.Media ? `http://localhost:5000/uploads/`+product.Media.name : ''), width=80)
+                            img(src=(product.Media ? `https://api.grimworld.xyz/uploads/`+product.Media.name : ''), width=80)
                         td=product.name
                         td=product.Category.name
                         td=product.price + '₽'
