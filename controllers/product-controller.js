@@ -64,6 +64,13 @@ class ProductController {
 
         return res.json({success: true})
     }
+
+    async payCallbackFC(req, res, next) {
+        console.log(req.body)
+
+        return res.json("YES")
+    }
+
 }
 
 module.exports = new ProductController()

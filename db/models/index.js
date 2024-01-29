@@ -19,4 +19,4 @@ Craft.belongsTo(Item, {as: "Result", foreignKey: "resultId"})
 Product.belongsTo(Media, {as: "Media"})
 Item.belongsTo(Media, {as: "Media"})
 
-Order.hasMany(Product, {as: "Products"})
+Order.belongsToMany(Product, { through: 'OrderProducts' })
