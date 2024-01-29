@@ -37,7 +37,7 @@ class ProductController {
             }
 
             function generateSignature(params) {
-                const data = Object.values(params).sort((a, b) => a.localeCompare(b))
+                const data = Object.values(params).sort()
                 data.unshift(process.env.FONDY_MERCHANT_PASSWORD)
                 const signature = data.json('|')
                 return sha1(signature)
