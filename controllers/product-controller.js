@@ -48,7 +48,7 @@ class ProductController {
             const rs = await axios.post('https://pay.fondy.eu/api/checkout/redirect/', {
                 ...params, signature
             })
-
+            console.log(rs.data)
             const {checkout_url, payment_id} = rs.data
 
             data.url = checkout_url
