@@ -7,7 +7,7 @@ const Item = sequelize.define('Item', {
         allowNull: false,
     },
     description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
     },
 }, {

@@ -11,5 +11,7 @@ router.get("/crafts", CraftController.getAll);
 router.get("/bans", BanController.getAll);
 router.get("/settings", SettingController.getAll);
 router.get("/online", SettingController.getOnline);
+router.post("/pay", ProductController.pay);
+router.post("/pay-callback", ProductController.payCallback);
 
 module.exports = router;
